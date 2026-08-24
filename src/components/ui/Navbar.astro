@@ -1,0 +1,228 @@
+---
+// Navbar.astro
+---
+
+<header>
+  <a href="/" class="icon">
+    <img src="/fintrack-icon.svg" alt="FinTrack Logo" />
+  </a>
+
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="#caracteristicas">Características</a></li>
+      <li><a href="/faqs">Preguntas Frecuentes</a></li>
+      <li><a href="https://astrosoft.vercel.app/" target="_blank" rel="noopener">Sobre nosotros</a></li>
+      <li><a href="#descarga">Descarga</a></li>
+      <li><a href="/terms">Terminos y Condiciones</a></li>
+    </ul>
+  </nav>
+
+  <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<style>
+  :root {
+    --bg: #05070a;
+    --bg-soft: #0b0f14;
+    --bg-card: #10161c;
+    --panel-deep: #0d2a20;
+    --nav-bg: rgba(5, 7, 10, 0.85);
+    --border: rgba(255, 255, 255, 0.08);
+    --green: #00a465;
+    --green-soft: rgba(0, 164, 101, 0.12);
+    --green-soft-strong: rgba(0, 164, 101, 0.22);
+    --text: #f5f7f8;
+    --text-muted: #9aa5ac;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f8f7;
+      --bg-soft: #eff3f1;
+      --bg-card: #ffffff;
+      --panel-deep: #dceee5;
+      --nav-bg: rgba(246, 248, 247, 0.85);
+      --border: rgba(11, 18, 16, 0.1);
+      --green-soft: rgba(0, 164, 101, 0.1);
+      --green-soft-strong: rgba(0, 164, 101, 0.16);
+      --text: #0b1210;
+      --text-muted: #5b6864;
+      color-scheme: light;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-body);
+  }
+
+  @media (min-width: 640px) {
+    header {
+      padding: 18px 40px;
+    }
+  }
+
+  header .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  nav ul li a {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--text);
+  }
+
+  /* Botón hamburguesa — solo visible en móvil */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 800px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 8px 20px 18px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav ul.show {
+      display: flex;
+    }
+
+    nav ul li {
+      width: 100%;
+    }
+
+    nav ul li a {
+      display: block;
+      width: 100%;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav ul li:last-child a {
+      border-bottom: none;
+    }
+  }
+</style>
+
+<script>
+  function setupNavigation() {
+    const toggleBtn = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (!toggleBtn || !navMenu) return;
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = toggleBtn.classList.toggle('open');
+      navMenu.classList.toggle('show');
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggleBtn.classList.remove('open');
+        navMenu.classList.remove('show');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  setupNavigation();
+  document.addEventListener('astro:after-swap', setupNavigation);
+</script>

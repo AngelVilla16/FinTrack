@@ -1,0 +1,87 @@
+<section class="hero">
+    <div class="left">
+        <h1 class="hero-title">
+            Controla tu <span style="color:#00a76b">dinero</span>, no al revés. 
+        </h1>
+        <p class="descripcion">
+            Fintrack te da una visión completa de tus finanzas personales - gastos - ingresos desde tu bolsillo.
+        </p>
+
+        <a class="btn" href="https://github.com/AngelVilla16/Fintrack-54/releases/download/Mobile/fintrack-3.1.apk"> Descargalo ahora en Android!</a>
+    </div>
+
+    <div class="right">
+        <div class="img-container">
+            <img src="/MockupLogin-preview.png" alt="Imagen de ejemplo">
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    .hero{
+        font-family: "Roboto", sans-serif;
+        position:relative;
+        z-index: 0;
+        display: grid;
+        grid-template-columns: 1fr 1.05fr;
+        align-items: center;
+        gap: 60px;
+        padding: 100px, 40px, 90px;
+        max-width: 1180px;
+        margin:0 auto;
+    }
+    .hero::before{
+        content: "";
+        position: absolute;
+        inset: -120px -160px;
+        background:
+            radial-gradient(480px circle at 82% 18%, var(--green-soft-strong), transparent 70%),
+            radial-gradient(420px circle at 8% 85%, var(--green-soft), transparent 70%);
+        filter: blur(70px);
+        z-index: -2;
+        pointer-events: none;
+    }
+
+    .hero::after{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(var(--border) 1px, transparent 1px);
+        background-size: 26px 26px;
+        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%);
+        mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%);
+        opacity: 0.7;
+        z-index: -1;
+        pointer-events: none;
+    }
+    .hero-title{
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+    }
+    .descripcion{
+         margin-top: 22px;
+        font-size: 1.1rem;
+        color: #9AA5AC;
+         max-width: 460px;
+         line-height: 1.6;
+    }
+    .btn{
+        margin-top: 34px;
+         background: #00a76b;
+        color: white;
+         padding: 16px 30px;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: transform 0.2s ease, background 0.2s ease;
+        text-decoration: none;
+    }
+    .btn:hover{
+        background: #00c078;
+         transform: translateY(-2px);
+    }
+
+</style>
