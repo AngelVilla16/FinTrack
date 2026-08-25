@@ -240,4 +240,41 @@ import Backlink from '../components/ui/Backlink.astro';
   .vt-badge img:hover {
     opacity: 0.9;
   }
+
+  @media (max-width: 768px) {
+    .faqs-section {
+      padding: 48px 16px 80px;
+    }
+
+    .faqs-header {
+      margin-bottom: 36px;
+    }
+
+    .faq-question {
+      padding: 16px 18px;
+      font-size: 0.98rem;
+    }
+
+    .faq-answer {
+      padding: 0 18px 18px;
+      padding-top: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faqs-header h1 {
+      font-size: 1.7rem;
+    }
+
+    .faq-question {
+      padding: 14px 14px;
+      font-size: 0.93rem;
+    }
+
+    .faq-answer {
+      padding: 0 14px 14px;
+      padding-top: 12px;
+      font-size: 0.92rem;
+    }
+  }
 </style>

@@ -84,4 +84,52 @@
          transform: translateY(-2px);
     }
 
+    @media (max-width: 992px) {
+        .hero {
+            gap: 40px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            grid-template-columns: 1fr;
+            gap: 48px;
+            padding: 120px 24px 80px;
+            text-align: center;
+        }
+
+        .hero::before {
+            inset: -80px -80px;
+        }
+
+        .descripcion {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+        }
+
+        .right {
+            order: -1;
+        }
+
+        .img-container img {
+            max-width: 320px;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero {
+            padding: 100px 16px 60px;
+        }
+
+        .img-container img {
+            max-width: 260px;
+        }
+    }
+
 </style>

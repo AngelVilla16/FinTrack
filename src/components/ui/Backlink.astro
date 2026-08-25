@@ -13,13 +13,30 @@
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
-    margin-top:50px;
+    margin-top: 50px;
     margin-bottom: 32px;
+    padding-left: 24px;
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
   .back-link:hover {
     color: var(--green, #00a465);
     transform: translateX(-4px);
+  }
+
+  @media (max-width: 768px) {
+    .back-link {
+      margin-top: 36px;
+      padding-left: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .back-link {
+      margin-top: 28px;
+      margin-bottom: 24px;
+      padding-left: 16px;
+      font-size: 0.85rem;
+    }
   }
 </style>
