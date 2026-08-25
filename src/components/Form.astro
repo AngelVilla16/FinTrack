@@ -1,0 +1,236 @@
+<section id="soporte" class="ticket-section">
+  <div class="ticket-card">
+    <div class="ticket-head">
+      <p class="badge">Soporte Técnico</p>
+      <h2 class="title">Levanta un Ticket</h2>
+      <p class="desc">¿Tuviste un problema, encontraste un bug o tienes una sugerencia? Envíanos un mensaje y lo revisaremos.</p>
+    </div>
+
+    <form id="ticket-form" class="ticket-form">
+      <div class="input-group">
+        <label for="titulo">Titulo</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ej. Nuevo Ticket" required />
+      </div>
+
+      <div class="input-group">
+        <label for="asunto">Asunto</label>
+        <input type="text" id="asunto" name="asunto" placeholder="Sugerencia" required />
+      </div>
+
+      <div class="input-group">
+        <label for="tipo">Tipo de ticket</label>
+        <div class="select-wrapper">
+          <select id="tipo" name="tipo" required>
+            <option value="" disabled selected hidden>Selecciona una opción</option>
+            <option value="Sugerencia"> Sugerencia de mejora</option>
+            <option value="Frontend"> Reportar un Error / Bug de diseño </option>
+            <option value="Backend">Reportar un Error / Bug de funcionalidad</option>
+            <option value="Bug">Reportar un error (se desconoce el tipo)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="mensaje">Detalle del mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe a detalle el problema o tu propuesta..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        <span>Enviar Ticket</span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('ticket-form') as HTMLFormElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+    
+      const response = await fetch('http://192.168.1.7:3000/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('Ticket enviado con éxito a tu sistema.');
+        form.reset();
+      } else {
+        alert('Error al procesar el ticket');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error de conexión con el backend.');
+    }
+  });
+</script>
+
+<style>
+  .ticket-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  }
+
+  .ticket-card {
+    background: var(--bg-card, #10161c);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+    border-radius: var(--radius-lg, 22px);
+    padding: 50px 40px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    .ticket-card {
+      padding: 32px 20px;
+    }
+  }
+
+  .ticket-head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .ticket-head .badge {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green, #00a465);
+    background: var(--green-soft, rgba(0, 164, 101, 0.12));
+    border: 1px solid rgba(0, 164, 101, 0.3);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .ticket-head .title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text, #f5f7f8);
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .ticket-head .desc {
+    color: var(--text-muted, #9aa5ac);
+    font-size: 0.95rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .input-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text, #f5f7f8);
+  }
+
+  .input-group input,
+  .input-group select,
+  .input-group textarea {
+    width: 100%;
+    background: var(--bg-soft, #0b0f14);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+    border-radius: var(--radius-md, 14px);
+    padding: 14px 16px;
+    color: var(--text, #f5f7f8);
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .input-group textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .input-group input:focus,
+  .input-group select:focus,
+  .input-group textarea:focus {
+    border-color: var(--green, #00a465);
+    box-shadow: 0 0 0 3px rgba(0, 164, 101, 0.15);
+  }
+
+  .input-group input::placeholder,
+  .input-group textarea::placeholder {
+    color: rgba(154, 165, 172, 0.5);
+  }
+
+  /* Estilizado del Select */
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-wrapper select {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .select-wrapper::after {
+    content: "▼";
+    font-size: 0.75rem;
+    color: var(--text-muted, #9aa5ac);
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .select-wrapper select option {
+    background-color: #10161c;
+    color: var(--text, #f5f7f8);
+  }
+
+  /* Botón de envío */
+  .btn-submit {
+    margin-top: 10px;
+    background: var(--green, #00a465);
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 32px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 164, 101, 0.25);
+  }
+
+  .btn-submit:hover {
+    background: #00c078;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 164, 101, 0.4);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+  }
+</style>

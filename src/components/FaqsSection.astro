@@ -1,0 +1,243 @@
+---
+import Backlink from '../components/ui/Backlink.astro';
+---
+
+<section class="faqs-section">
+ 
+  <Backlink/>
+
+  <header class="faqs-header">
+    <span class="badge">CENTRO DE AYUDA</span>
+    <h1>Preguntas Frecuentes y uso de FinTrack</h1>
+    <p>Para preguntas o dudas específicas puedes utilizar el formulario de soporte en la página principal.</p>
+  </header>
+
+  <div class="faqs-content">
+    <details class="faq-item">
+      <summary class="faq-question">
+        <span>¿Cómo puedo instalar FinTrack?</span>
+        <span class="icon">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Instalar FinTrack es muy sencillo:</p>
+        <ol>
+          <li>Haz clic en el botón de <strong>Descargar ahora</strong> para obtener el archivo APK.</li>
+          <li>El archivo se guardará en la carpeta <em>Descargas</em> de tu dispositivo Android.</li>
+          <li>Abre el archivo y ejecuta la instalación. Tu dispositivo puede solicitar permisos para instalar aplicaciones de fuentes desconocidas, los cuales debes autorizar para completar el proceso.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        <span>¿Cómo manejamos tu información?</span>
+        <span class="icon">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>
+          En <strong>Astrosoft</strong> nos tomamos muy en serio tu privacidad. Tus datos están resguardados en nuestra base de datos y no se comparten con terceros.
+        </p>
+        <ul>
+          <li><strong>Contraseñas seguras:</strong> Todas las credenciales se almacenan encriptadas; nadie en nuestro equipo tiene acceso a ellas.</li>
+          <li><strong>Sin vinculación bancaria:</strong> No solicitamos ni registramos tarjetas ni credenciales de instituciones bancarias. Todos los montos son ingresados manualmente por ti.</li>
+          <li><strong>Contacto directo:</strong> Tu correo solo se utiliza para gestionar tu cuenta o responder solicitudes de soporte.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        <span>¿Por qué FinTrack no se encuentra en la Google Play Store?</span>
+        <span class="icon">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>
+          Publicar en tiendas oficiales implica restricciones administrativas y cuotas recurrentes que no garantizan la permanencia de proyectos independientes. Al alojar la aplicación directamente bajo nuestro propio control, podemos ofrecer actualizaciones más rápidas y soporte directo a nuestra comunidad sin intermediarios.
+        </p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        <span>¿Por qué confiar en FinTrack?</span>
+        <span class="icon">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>
+          FinTrack es un proyecto de código abierto donde el código puede ser auditado. Para mayor tranquilidad, analizamos continuamente nuestras versiones APK en herramientas públicas como <strong>VirusTotal</strong> para certificar que el ejecutable se encuentra 100% libre de malware.
+        </p>
+        <div class="vt-badge">
+          <a href="https://www.virustotal.com/gui/" target="_blank" rel="noopener noreferrer">
+            <img src="../src/assets/vt.png" alt="Verificación de VirusTotal para FinTrack APK" />
+          </a>
+        </div>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        <span>¿Cómo empezar a usar FinTrack?</span>
+        <span class="icon">+</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Una vez descargada e instalada la aplicación, crea tu cuenta e inicia sesión. A partir de ahí puedes:</p>
+        <ul class="steps-list">
+          <li>
+            <strong>Registrar Ingresos:</strong> Añade manualmente los montos iniciales o tus entradas de dinero.
+          </li>
+          <li>
+            <strong>Registrar Gastos:</strong> Asigna tus salidas a categorías (comida, servicios, transporte) para generar analíticas visuales.
+          </li>
+          <li>
+            <strong>Exportar Datos:</strong> Genera reportes en formato PDF con la tabla de tus últimos movimientos para un mejor control personal.
+          </li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<style>
+  .faqs-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+    font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    color: var(--text, #f5f7f8);
+  }
+
+  
+
+  .faqs-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .faqs-header .badge {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--green, #00a465);
+    background: var(--green-soft, rgba(0, 164, 101, 0.12));
+    border: 1px solid rgba(0, 164, 101, 0.3);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .faqs-header h1 {
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .faqs-header p {
+    color: var(--text-muted, #9aa5ac);
+    font-size: 1.05rem;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .faqs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: var(--bg-card, #10161c);
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+    border-radius: var(--radius-md, 14px);
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(0, 164, 101, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .faq-question {
+    padding: 20px 24px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: background 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .faq-question .icon {
+    font-size: 1.4rem;
+    color: var(--green, #00a465);
+    transition: transform 0.3s ease;
+    line-height: 1;
+  }
+
+  .faq-item[open] .faq-question .icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 24px 24px;
+    color: var(--text-muted, #9aa5ac);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: 4px;
+    padding-top: 16px;
+  }
+
+  .faq-answer p {
+    margin-bottom: 12px;
+  }
+
+  .faq-answer strong {
+    color: var(--text, #f5f7f8);
+  }
+
+  .faq-answer ul,
+  .faq-answer ol {
+    margin: 12px 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq-answer li {
+    padding-left: 4px;
+  }
+
+  .vt-badge {
+    margin-top: 16px;
+    display: inline-block;
+  }
+
+  .vt-badge img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+    transition: opacity 0.2s ease;
+  }
+
+  .vt-badge img:hover {
+    opacity: 0.9;
+  }
+</style>
