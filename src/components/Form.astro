@@ -44,14 +44,22 @@
 
 <script>
   const form = document.getElementById('ticket-form') as HTMLFormElement;
-
+  const submitBtn = form?.querySelector('.btn-submit') as HTMLButtonElement;
+  let enviando = false;
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if(enviando){
+      return;
+    }
+
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    
+    enviando = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
 
 
     try {
@@ -76,6 +84,11 @@
     } catch (err) {
       console.error(err);
       alert('Error de conexión con el backend.');
+    }
+    finally{
+      enviando = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar Ticket';
     }
   });
 </script>
